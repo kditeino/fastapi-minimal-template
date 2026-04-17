@@ -1,0 +1,114 @@
+# ============================================================================
+# fba-admin-template — one-shot dev/demo stack
+# ----------------------------------------------------------------------------
+# Brings up the full admin: React frontend + FastAPI backend + MySQL + Redis.
+# First-time setup:
+#   1. cp .env.example .env   (edit if you want different ports/passwords)
+#   2. docker compose up -d --build
+#   3. ./scripts/docker-init.sh   (seeds DB + menus, first time only)
+#
+# All persistent state lives in named volumes — nothing writes to your host
+# filesystem (aside from the bind-mounted env/seed files).
+# ============================================================================
+
+networks:
+  fba-net:
+    driver: bridge
+
+volumes:
+  fba-mysql-data:
+  fba-redis-data:
+  fba-backend-static:
+  fba-backend-upload:
+
+services:
+  # ── MySQL ───────────────────────────────────────────────────────────────
+  fba-mysql:
+    image: mysql:8.0
+    container_name: fba-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-fba_root_pwd}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-fba}
+      TZ: Asia/Shanghai
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --default-authentication-plugin=mysql_native_password
+      - --lower_case_table_names=1
+    volumes:
+      - fba-mysql-data:/var/lib/mysql
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    networks:
+      - fba-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD:-fba_root_pwd}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  # ── Redis ───────────────────────────────────────────────────────────────
+  fba-redis:
+    image: redis:7-alpine
+    container_name: fba-redis
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Shanghai
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - fba-redis-data:/data
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    networks:
+      - fba-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # ── FastAPI backend ─────────────────────────────────────────────────────
+  fba-backend:
+    build:
+      context: ./fastapi-backend
+      dockerfile: Dockerfile
+      args:
+        SERVER_TYPE: fba_server
+    image: fba-admin-backend:latest
+    container_name: fba-backend
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Shanghai
+    depends_on:
+      fba-mysql:
+        condition: service_healthy
+      fba-redis:
+        condition: service_healthy
+    volumes:
+      # The backend reads secrets/config from /fba/backend/.env. We bind-mount
+      # a template from docker/ so updating env vars doesn't require a rebuild.
+      - ./docker/fba-backend.env:/fba/backend/.env:ro
+      - fba-backend-static:/fba/backend/app/static
+      - fba-backend-upload:/fba/backend/static/upload
+    ports:
+      - "${BACKEND_PORT:-8001}:8001"
+    networks:
+      - fba-net
+
+  # ── React frontend (Vite build → nginx) ─────────────────────────────────
+  fba-frontend:
+    build:
+      context: ./fastapi-minimal-admin
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: /api/v1
+    image: fba-admin-frontend:latest
+    container_name: fba-frontend
+    restart: unless-stopped
+    depends_on:
+      - fba-backend
+    ports:
+      - "${FRONTEND_PORT:-8080}:80"
+    networks:
+      - fba-net

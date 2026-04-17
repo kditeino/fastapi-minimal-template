@@ -1,0 +1,22 @@
+{
+  "overview": "Overview",
+  "system": "System",
+  "user": "User",
+  "role": "Role",
+  "dept": "Department",
+  "menu": "Menu",
+  "data_rule": "Data Rule",
+  "data_scope": "Data Scope",
+  "file": "File",
+  "plugin": "Plugin",
+  "log": "Log",
+  "login_log": "Login Log",
+  "opera_log": "Operation Log",
+  "monitor": "Monitor",
+  "session": "Session",
+  "task": "Task",
+  "task_control": "Task Control",
+  "task_result": "Task Results",
+  "task_scheduler": "Scheduler",
+  "subheader": "Admin"
+}

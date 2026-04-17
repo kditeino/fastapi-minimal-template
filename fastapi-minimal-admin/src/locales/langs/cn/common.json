@@ -1,0 +1,64 @@
+{
+  "demo": {
+    "lang": "中文",
+    "description": "基于 MUI 的下一个项目起点。轻松定制帮助您更快更好地构建应用。"
+  },
+  "page": {
+    "dashboard": {
+      "title": "仪表盘",
+      "analytics": "数据分析",
+      "workspace": "工作台"
+    },
+    "menu": {
+      "system": "系统管理",
+      "sysUser": "用户管理",
+      "sysRole": "角色管理",
+      "sysDept": "部门管理",
+      "sysMenu": "菜单管理",
+      "sysDataPermission": "数据权限",
+      "sysDataScope": "数据范围",
+      "sysDataRule": "数据规则",
+      "sysPlugin": "插件管理",
+      "scheduler": "任务调度",
+      "schedulerManage": "任务管理",
+      "schedulerRecord": "任务记录",
+      "log": "日志管理",
+      "login": "登录日志",
+      "opera": "操作日志",
+      "monitor": "系统监控",
+      "online": "在线用户",
+      "redis": "Redis监控",
+      "server": "服务器监控",
+      "profile": "个人中心"
+    }
+  },
+  "nav": {
+    "dashboard": {
+      "overview": "运营概览",
+      "monitor": "系统监控"
+    },
+    "system": {
+      "title": "系统管理",
+      "user": "用户管理",
+      "role": "角色管理",
+      "dept": "部门管理",
+      "menu": "菜单管理",
+      "dataRule": "数据规则",
+      "dataScope": "数据范围",
+      "plugin": "插件管理",
+      "file": "文件管理",
+      "session": "在线会话"
+    },
+    "log": {
+      "title": "日志管理",
+      "login": "登录日志",
+      "opera": "操作日志"
+    },
+    "task": {
+      "title": "任务管理",
+      "control": "任务控制",
+      "result": "任务结果",
+      "scheduler": "定时任务"
+    }
+  }
+}

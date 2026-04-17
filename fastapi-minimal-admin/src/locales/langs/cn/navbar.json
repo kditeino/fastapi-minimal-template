@@ -1,0 +1,22 @@
+{
+  "overview": "概览",
+  "system": "系统管理",
+  "user": "用户管理",
+  "role": "角色管理",
+  "dept": "部门管理",
+  "menu": "菜单管理",
+  "data_rule": "数据规则",
+  "data_scope": "数据范围",
+  "file": "文件管理",
+  "plugin": "插件管理",
+  "log": "日志管理",
+  "login_log": "登录日志",
+  "opera_log": "操作日志",
+  "monitor": "系统监控",
+  "session": "在线会话",
+  "task": "任务管理",
+  "task_control": "任务控制",
+  "task_result": "任务结果",
+  "task_scheduler": "定时任务",
+  "subheader": "管理后台"
+}

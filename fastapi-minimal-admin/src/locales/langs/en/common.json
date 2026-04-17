@@ -1,0 +1,64 @@
+{
+  "demo": {
+    "lang": "English",
+    "description": "The starting point for your next project is based on MUI. Easy customization helps you build apps faster and better."
+  },
+  "page": {
+    "dashboard": {
+      "title": "Dashboard",
+      "analytics": "Analytics",
+      "workspace": "Workspace"
+    },
+    "menu": {
+      "system": "System",
+      "sysUser": "User",
+      "sysRole": "Role",
+      "sysDept": "Department",
+      "sysMenu": "Menu",
+      "sysDataPermission": "Data Permission",
+      "sysDataScope": "Data Scope",
+      "sysDataRule": "Data Rule",
+      "sysPlugin": "Plugin",
+      "scheduler": "Scheduler",
+      "schedulerManage": "Task Management",
+      "schedulerRecord": "Task Record",
+      "log": "Log",
+      "login": "Login Log",
+      "opera": "Operation Log",
+      "monitor": "Monitor",
+      "online": "Online Users",
+      "redis": "Redis Monitor",
+      "server": "Server Monitor",
+      "profile": "Profile"
+    }
+  },
+  "nav": {
+    "dashboard": {
+      "overview": "Overview",
+      "monitor": "Monitor"
+    },
+    "system": {
+      "title": "System",
+      "user": "User",
+      "role": "Role",
+      "dept": "Department",
+      "menu": "Menu",
+      "dataRule": "Data Rule",
+      "dataScope": "Data Scope",
+      "plugin": "Plugin",
+      "file": "File",
+      "session": "Session"
+    },
+    "log": {
+      "title": "Log",
+      "login": "Login Log",
+      "opera": "Operation Log"
+    },
+    "task": {
+      "title": "Task",
+      "control": "Task Control",
+      "result": "Task Result",
+      "scheduler": "Scheduler"
+    }
+  }
+}
