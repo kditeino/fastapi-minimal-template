@@ -2,7 +2,7 @@
 一次性迁移:为 sys_user 增加 login_alias 列并回填 kdit-{nickname}
 
 用法:
-    cd fastapi-backend
+    cd api
     export PYTHONPATH=$(pwd)
     .venv/bin/python scripts/add_login_alias.py [--dry-run]
 

@@ -34,6 +34,6 @@ target/
 venv/
 
 # Local env files (contain secrets — ship .env.example instead)
-fastapi-backend/backend/.env
-fastapi-minimal-admin/.env.local
+api/backend/.env
+web/.env.local
 .deploy/

@@ -14,15 +14,15 @@ RBAC, dynamic menus, and a dozen pre-wired admin modules out of the box
 
 | Path | Purpose |
 |------|---------|
-| `fastapi-minimal-admin/` | React/Vite frontend (the admin UI) |
-| `fastapi-backend/` | FastAPI backend (FBA) |
+| `web/` | React/Vite frontend (the admin UI) |
+| `api/` | FastAPI backend (FBA) |
 | `fba-seed/` | Custom SQL seed aligning the backend menu with the frontend routes |
 
 ## Dev workflow
 
 ### Frontend
 ```bash
-cd fastapi-minimal-admin
+cd web
 corepack yarn install    # first time only
 corepack yarn dev        # http://localhost:8080
 corepack yarn build      # full type-check + bundle (no test suite)
@@ -31,7 +31,7 @@ corepack yarn lint       # eslint
 
 ### Backend
 ```bash
-cd fastapi-backend
+cd api
 uv sync                                                    # first time only
 cp backend/.env.example backend/.env                       # then edit DB/Redis/token
 export PYTHONPATH=$(pwd)

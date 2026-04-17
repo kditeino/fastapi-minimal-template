@@ -1,7 +1,7 @@
 # fba-seed
 
 Custom seed data for the FastAPI Best Architecture (FBA) backend, tailored to
-the Minimal UI frontend in `fastapi-minimal-admin/`.
+the Minimal UI frontend in `web/`.
 
 FBA ships with `init_test_data.sql` that assumes the vben-admin frontend — its
 menu `path`, `name`, and `component` values point at vben's routes, which don't
@@ -17,7 +17,7 @@ match this project's routes. We override those rows with our own.
 
 1. Run FBA's standard init first (only needs to happen once per fresh DB):
    ```bash
-   cd fastapi-backend
+   cd api
    export PYTHONPATH=$(pwd)
    .venv/bin/fba init   # confirm with "y"
    ```
@@ -68,5 +68,5 @@ the menu tree — don't hand-edit `sys_menu` rows in the admin UI expecting them
 to persist through a reseed.
 
 The i18n keys used in `title` are defined in
-`fastapi-minimal-admin/src/locales/langs/{cn,en}/common.json` under the `nav`
+`web/src/locales/langs/{cn,en}/common.json` under the `nav`
 namespace. Keep both in sync.

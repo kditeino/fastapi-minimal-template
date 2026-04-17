@@ -14,8 +14,8 @@ FastAPI + Minimal UI Kit 全栈管理后台模板。前端 React + MUI，后端 
 
 | 路径 | 说明 |
 |---|---|
-| `fastapi-minimal-admin/` | React/Vite 前端（Minimal UI Kit） |
-| `fastapi-backend/` | FastAPI 后端（FBA） |
+| `web/` | React/Vite 前端（Minimal UI Kit） |
+| `api/` | FastAPI 后端（FBA） |
 | `fba-seed/` | 对齐前端路由的菜单种子 SQL |
 
 ## 本地开发
@@ -30,7 +30,7 @@ FastAPI + Minimal UI Kit 全栈管理后台模板。前端 React + MUI，后端 
 ### 后端
 
 ```bash
-cd fastapi-backend
+cd api
 uv sync                                  # 安装 Python 依赖
 cp backend/.env.example backend/.env     # 编辑数据库 / Redis / TOKEN
 export PYTHONPATH=$(pwd)
@@ -48,7 +48,7 @@ mysql -h <host> -u <user> -p <db> < ../fba-seed/minimal_menus.sql
 ### 前端
 
 ```bash
-cd fastapi-minimal-admin
+cd web
 corepack enable                          # 首次运行
 corepack yarn install
 corepack yarn dev                        # http://localhost:8080/
@@ -69,11 +69,11 @@ corepack yarn dev                        # http://localhost:8080/
 
 ```bash
 # 前端产物
-cd fastapi-minimal-admin
+cd web
 corepack yarn build                      # 输出 dist/
 
 # 后端
-cd fastapi-backend
+cd api
 .venv/bin/fba run --port 8001            # 或使用 supervisord / systemd 守护
 ```
 
@@ -84,7 +84,7 @@ cd fastapi-backend
 Celery worker + Beat：
 
 ```bash
-cd fastapi-backend
+cd api
 export PYTHONPATH=$(pwd)
 .venv/bin/celery -A backend.app.task.celery worker --loglevel=INFO --pool=solo
 .venv/bin/celery -A backend.app.task.celery beat --loglevel=INFO

@@ -7,7 +7,7 @@ set -euo pipefail
 export PATH=/usr/local/bin:$PATH
 
 DEPLOY_DIR=/Users/kdit/fba-deploy
-BACKEND_DIR="$DEPLOY_DIR/fastapi-backend"
+BACKEND_DIR="$DEPLOY_DIR/api"
 ENV_FILE="$DEPLOY_DIR/backend.env"
 NETWORK=fba-net
 

@@ -33,7 +33,6 @@ dependencies = [
   "jinja2>=3.1.6",
   "loguru>=0.7.3",
   "msgspec>=0.20.0",
-  "openpyxl>=3.1.5",
   "opentelemetry-exporter-otlp-proto-grpc>=1.40.0",
   "opentelemetry-instrumentation-asyncio>=0.60b1",
   "opentelemetry-instrumentation-celery>=0.60b1",
@@ -43,7 +42,6 @@ dependencies = [
   "opentelemetry-instrumentation-redis>=0.60b1",
   "opentelemetry-instrumentation-sqlalchemy>=0.60b1",
   "opentelemetry-sdk>=1.40.0",
-  "pandas>=2.3.3",
   "prometheus-client>=0.24.1",
   "psutil>=7.2.2",
   # https://github.com/fastapi-practices/fastapi_best_architecture/issues/887
@@ -62,7 +60,6 @@ dependencies = [
   "sqlparse>=0.5.5",
   "starlette-context>=0.5.1",
   "user-agents>=2.2.0",
-  "xlrd>=2.0.2",
 ]
 dynamic = ["version"]
 

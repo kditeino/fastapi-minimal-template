@@ -7,7 +7,7 @@
 - 冲突追加 -{username}
 
 用法:
-    cd fastapi-backend
+    cd api
     export PYTHONPATH=$(pwd)
     .venv/bin/python scripts/recompute_login_alias.py --dry-run
     .venv/bin/python scripts/recompute_login_alias.py

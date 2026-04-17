@@ -71,7 +71,7 @@ services:
   # ── FastAPI backend ─────────────────────────────────────────────────────
   fba-backend:
     build:
-      context: ./fastapi-backend
+      context: ./api
       dockerfile: Dockerfile
       args:
         SERVER_TYPE: fba_server
@@ -99,7 +99,7 @@ services:
   # ── React frontend (Vite build → nginx) ─────────────────────────────────
   fba-frontend:
     build:
-      context: ./fastapi-minimal-admin
+      context: ./web
       dockerfile: Dockerfile
       args:
         VITE_API_BASE_URL: /api/v1
